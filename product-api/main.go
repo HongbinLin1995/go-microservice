@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/HongbinLin1995/go-microservice/handlers"
+	"github.com/HongbinLin1995/go-microservice/product-api/handlers"
 	"github.com/gorilla/mux"
 )
 
