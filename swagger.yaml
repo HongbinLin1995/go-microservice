@@ -3,15 +3,17 @@ consumes:
 - application/json
 definitions:
   GenericError:
-    description: GenericError is a generic error message returned by a server
+    description: GenericError GenericError is a generic error message returned by
+      a server
     properties:
       message:
+        description: message
         type: string
         x-go-name: Message
     type: object
-    x-go-package: github.com/HongbinLin1995/go-microservice/handlers
+    x-go-package: github.com/HongbinLin1995/go-microservice/sdk/models
   Product:
-    description: Product defines the structure for an API product
+    description: Product Product defines the structure for an API product
     properties:
       description:
         description: the description for this poduct
@@ -45,21 +47,23 @@ definitions:
     - price
     - sku
     type: object
-    x-go-package: github.com/HongbinLin1995/go-microservice/data
+    x-go-package: github.com/HongbinLin1995/go-microservice/sdk/models
   ValidationError:
-    description: ValidationError is a collection of validation error messages
+    description: ValidationError ValidationError is a collection of validation error
+      messages
     properties:
       messages:
+        description: messages
         items:
           type: string
         type: array
         x-go-name: Messages
     type: object
-    x-go-package: github.com/HongbinLin1995/go-microservice/handlers
+    x-go-package: github.com/HongbinLin1995/go-microservice/sdk/models
 info:
   description: Documentation for Product API
   title: of Product API
-  version: 1.0.0
+  version: 2.0.0
 paths:
   /products:
     get:
@@ -103,6 +107,20 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/Product'
+      responses:
+        "201":
+          $ref: '#/responses/noContentResponse'
+        "404":
+          $ref: '#/responses/errorResponse'
+        "422":
+          $ref: '#/responses/errorValidation'
+      tags:
+      - products
+  /products/{id}:
+    delete:
+      description: Delete a product based on id
+      operationId: deleteProduct
+      parameters:
       - description: The id of the product for which the operation relates
         format: int64
         in: path
@@ -115,26 +133,21 @@ paths:
           $ref: '#/responses/noContentResponse'
         "404":
           $ref: '#/responses/errorResponse'
-        "422":
-          $ref: '#/responses/errorValidation'
-      tags:
-      - products
-  /products/{id}:
-    delete:
-      description: Update a products details
-      operationId: deleteProduct
-      responses:
-        "201":
-          $ref: '#/responses/noContentResponse'
-        "404":
-          $ref: '#/responses/errorResponse'
         "501":
           $ref: '#/responses/errorResponse'
       tags:
       - products
     get:
       description: Return a list of products from the database
-      operationId: listSingle
+      operationId: listSingleProduct
+      parameters:
+      - description: The id of the product for which the operation relates
+        format: int64
+        in: path
+        name: id
+        required: true
+        type: integer
+        x-go-name: ID
       responses:
         "200":
           $ref: '#/responses/productResponse'
