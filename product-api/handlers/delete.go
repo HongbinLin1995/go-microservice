@@ -3,11 +3,11 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/HongbinLin1995/go-microservice/data"
+	"github.com/HongbinLin1995/go-microservice/product-api/data"
 )
 
 // swagger:route DELETE /products/{id} products deleteProduct
-// Delete a product based on id
+// Update a products details
 //
 // responses:
 //	201: noContentResponse

@@ -4,7 +4,7 @@
 //
 //	Schemes: http
 //	BasePath: /
-//	Version: 2.0.0
+//	Version: 1.0.0
 //
 //	Consumes:
 //	- application/json
@@ -15,7 +15,7 @@
 // swagger:meta
 package handlers
 
-import "github.com/HongbinLin1995/go-microservice/data"
+import "github.com/HongbinLin1995/go-microservice/product-api/data"
 
 //
 // NOTE: Types defined here are purely for documentation purposes
@@ -67,12 +67,10 @@ type productParamsWrapper struct {
 	Body data.Product
 }
 
-// swagger:parameters listSingleProduct deleteProduct
+// swagger:parameters updateProduct
 type productIDParamsWrapper struct {
 	// The id of the product for which the operation relates
 	// in: path
 	// required: true
 	ID int `json:"id"`
 }
-
-// swagger:parameters
