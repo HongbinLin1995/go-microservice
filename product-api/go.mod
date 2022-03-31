@@ -1,4 +1,4 @@
-module github.com/HongbinLin1995/go-microservice
+module github.com/HongbinLin1995/go-microservice/product-api
 
 go 1.18
 
